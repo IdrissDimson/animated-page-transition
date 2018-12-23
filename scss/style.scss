@@ -1,0 +1,90 @@
+@import '../partials/_layout.scss';
+@import '../partials/_mixins.scss';
+@import '../partials/_variables.scss';
+
+/* -------------------------------- 
+
+Primary style
+
+-------------------------------- */
+
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font: {
+        size: 1.6rem;
+        family: $primary-font; //variables inside partials > _variables.scss
+    }
+    color: $color-1;
+    background-color: $color-3;
+    @include font-smoothing;
+}
+
+a {
+    color: $color-2;
+    text-decoration: none;
+}
+
+h1 {
+    color: $color-3;
+    margin-bottom: 1em;
+    font-size: 2.2rem;
+    
+    @include MQ(M) {
+        font-size: 4.4rem;
+        font-weight: 300;
+    }
+}
+
+/* -------------------------------- 
+
+Patterns - reusable parts of our design
+
+-------------------------------- */
+
+.btn {
+    display: inline-block;
+    padding: 1.4em 1.6em;
+    margin-bottom: 2em;
+    border-radius: 50em;
+    background-color: $color-2;
+    color: $color-3;
+    font-weight: bold;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 1px 4px rgba(#000, .1);
+    
+    .no-touch &:hover {
+        background-color: lighten($color-2, 5%);
+    }
+    
+    .about & {
+        background-color: $color-1;
+    }
+}
+
+/* -------------------------------- 
+
+Main Components 
+
+-------------------------------- */
+
+body {
+    &::after, &::before {
+        /* these are the 2 half blocks which cover the content once the animation is triggered */
+        content: '';
+        height: 50vh;
+        width: 100%;
+        position: fixed;
+        left: 0;
+        background-color: $color-3;
+        z-index: 1;
+    }
+}
