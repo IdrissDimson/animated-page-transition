@@ -1,12 +1,12 @@
-let isAnimating = false;
-let newLocation = '';
-let firstLoad = false;
-
 const button = document.querySelector('.btn');
 const loadingBar = document.querySelector('.loading-bar');
 const body = document.getElementsByTagName('body');
 
-const changePage = (url, bool) => {
+let isAnimating = false;
+let newLocation = '';
+let firstLoad = false;
+
+function changePage(url, bool) {
     isAnimating = true;
     
     body.classList.add('page-is-changing');
@@ -15,15 +15,15 @@ const changePage = (url, bool) => {
         newLocation = url;
     });
     //if browser doesn't support CSS transitions
-    if( !transitionsSupported() ) {
+    if(!transitionsSupported()) {
         loadNewContent(url, bool);
         newLocation = url;
     }
 }
-const loadNewContent = (url, bool) => {
-    url = ('' == url) ? 'index.html' : url;
+function loadNewContent(url, bool){
+    url = ('' === url) ? 'index.html' : url;
     let newSection = url.replace('.html', '');
-    let section = '<section class="main-content '+newSection+'"></section>';
+    let section = '<section class="main-content ' + newSection + '"></section>';
     
     fetch(url+'.main-content > *')
         .then(response => response.text())
@@ -40,10 +40,10 @@ const loadNewContent = (url, bool) => {
             if( !transitionsSupported() ) {isAnimating = false;}
             });
             
-            if(url!=window.location && bool){
+            if(url != window.location && bool){
                 //add the new page to the window.history
                 //if the new page was triggered by a 'popstate' event, don't add it
-                window.history.pushState({path: url},'',url);
+                window.history.pushState({path: url}, '', url);
             }
         })
 }
@@ -52,7 +52,7 @@ function smoothAni(event){
     event.preventDefault();
     //detect which page has been selected
     const newPage = this.getAttribute('href');
-    if( !isAnimating ) changePage(newPage, true);
+    if(!isAnimating){changePage(newPage, true)};
     firstLoad = true;
 }
 
