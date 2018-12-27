@@ -205,6 +205,10 @@ main {
         .main-content {
             height: calc(100vh - 40px);
         }
+
+        &.index > div {
+			padding-top: 200px;
+        }
         
         &.index > div {
             padding-top: 50px;
@@ -254,7 +258,8 @@ main {
 	width: 90%;
 	background-color: $color-1;
 	visibility: hidden;
-    transition: visibility 0s 0.4s, transform 0.4s 0s ease-in;
+    transition: visibility 0s 0.4s;
+    transform: 0.4s 0s ease-in;
     
     /* Force Hardware Acceleration */
     backface-visibility: hidden;
@@ -284,6 +289,7 @@ main {
         transform: translateZ(0);
         
         transform: scaleX(0);
+        
         transform-origin: left center;
     }
     

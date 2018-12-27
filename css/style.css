@@ -147,6 +147,8 @@ main {
       main .main-content {
         height: calc(100vh - 40px); }
       main.index > div {
+        padding-top: 200px; }
+      main.index > div {
         padding-top: 50px; }
       main p {
         font-size: 1.8rem;
@@ -187,7 +189,8 @@ main {
   width: 90%;
   background-color: #4089a6;
   visibility: hidden;
-  transition: visibility 0s 0.4s, transform 0.4s 0s ease-in;
+  transition: visibility 0s 0.4s;
+  transform: 0.4s 0s ease-in;
   /* Force Hardware Acceleration */
   backface-visibility: hidden;
   transform: translateZ(0);
